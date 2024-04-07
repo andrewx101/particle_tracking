@@ -40,7 +40,7 @@ Enter the diameter (in pixels) of a typical particle spot in the raw image in th
 
 Enter the diameter (in pixels) within which the computer could determine the maximum intensity as a raw location of a particle, in the text box next to the "Find peaks" checkbox. And also determine the minimum brightness (intensity value) below which the computer should not consider as a particle, by adjusting the spinner or slider next to the label "Min brightness". If this value is set too low, some artifact spots will be considered particles and be located. Please browse through more frames by the "Frame" slider or spinner to check if this happens to some frames. More details about this step can be found elsewhere.[^1][^3] In these sources, please find information related to "pkfnd"for an understanding of the diameter parameter and the minimum brightness parameter.
 
-The peak finding process provides two set of results. The first set is the raw locations of the particles. These are displayed on the image as "+" symbols. The second set is the refined locations by Guassian profile fitting. These are displayed on the image as "x" symbols. This step is done automatically in the current app. In other sources,[^1][^3] the refining step corresponds to the contents about the "cntrd" function. Check the "Find peaks" checkbox to preview the results over the image.
+The peak finding process provides two set of results. The first set is the raw locations of the particles. These are displayed on the image as "+" symbols. The second set is the refined locations by Gaussian profile fitting. These are displayed on the image as "x" symbols. This step is done automatically in the current app. In other sources,[^1][^3] the refining step corresponds to the contents about the "cntrd" function. Check the "Find peaks" checkbox to preview the results over the image.
 
 Note that if the "Band-pass filter" checkbox is unchecked, the peak finding is based on the raw images, rather than the band-passed images.
 
@@ -51,8 +51,8 @@ Note that the plotted results when we change the parameters are only for preview
 ### Tracking
 In this step the computer can link the locations of particle in each frame into trajectories. To do this properly the computer needs to know three parameters.
 
-* "Max. Disp. (px)" textbox: The maximum displacement possible for a particle. Effectively, this parameter tells the computer not to link two positions larger than this range.
-* "Memory" textbox: If two locations satifies the condition of linking, but they are separated by a number of frames (e.g. a particle moves out of focus in a while and returns back in focus), the computer need this criteion (number of lag frames) to determing whether to link them into the same trajectory or to split them into two trajectories.
+* "Max. Disp." textbox: The maximum displacement possible for a particle. Effectively, this parameter tells the computer not to link two positions larger than this range.
+* "Memory" textbox: If two locations satisfies the condition of linking, but they are separated by a number of frames (e.g. a particle moves out of focus in a while and returns back in focus), the computer need this criterion (number of lag frames) to determining whether to link them into the same trajectory or to split them into two trajectories.
 *  "Min. length" textbox: After the tracking process, some trajectories will be very short which might not be of great value. The computer discards trajectories with number of steps less then this parameter.
 
 Please find more details about these parameter in other sources [^1][^3].
@@ -65,22 +65,47 @@ Note that if you have clicked "Locate all frames" button when "Band-pass filter"
 
 You may want to zoom the image to view the result of a particular particle. It is a fun to change the current frame by the spinner and see how the position of this particle shift along the trajectory.
 
+Click “Clear tracks” to clear the tracks data and the plotted trajectories in the figure.
+
 ### Save outputs into files
 Click "Save data" button and a number of files will be saved under the same path of the opened files.
 
-The Microsoft Excel file `meta.xlsx` contains all the metadata displayed in the table control.
+Three sets of data will be saved to  `PTOutput.mat` file if they are not empty. This file will be saved at the same folder of the imported time-lapse series.
 
-`tr.mat` contains the trajectory data. See the README of [Track Analysis](https://github.com/andrewx101/track_analysis/) app for details.
+1. The meta data. These are the content in the table control. It will be save in `meta` (table) in the output `.mat` file. In addition, the shutter time is saved in `dt` (double), and the calibrated pixel size will be save in `PixelSize` (double) . 
+2. The peak finding data. These includes the following variables
 
-`dat.mat` contains the following variables:
+​	`blnBPass` (boolean): whether the peak finding was based on band-pass filtered images
 
-* `br`: the average brightness of the particles;
-* `ns`: the average noise level;
-* `snr`: the signle-to-noise ratio calculated by `br` and `ns`;
-* `dt`: the average lag time (in seconds) between adjacent frames
-* `poslst`: the original data of position list used for tracking.
+​	`BPassDia` (double): the diameter for band-pass filtering
+
+​	`PkfndDia` (double): the diameter for peak finding
+
+​	`MinBrightness` (double): the cut-off brightness for peak finding
+
+​	`br` (double): average brightness of the particle in the raw images
+
+​	`meanNoise` (double): mean noise level of the raw images
+
+​	`stdNoise` (double): standard deviation of the noise level of the raw images
+
+​	`snr` (double): the signal-to-noise ratio of the raw images
+
+​	`poslst` (4-column double): the position list data
 
 Details about the matrix `poslst` can be found elsewhere.[^1][^3] In reference [^1], find information about "pos_lst". In reference [^3], find information about "poslist".
+
+3. The tracks data. These includes the following variables
+
+​	`MaxDisp` (double): the maximum displacement used for the tracking process
+
+​	`Memory` (double): the memory parameter used for the tracking process
+
+​	`MinLength` (double): the minimum length parameter used for the tracking process
+
+​	`tr` (4-column double): the tracking data See the README of [Track Analysis](https://github.com/andrewx101/track_analysis/) app for details.
+
+If any of the three set of data are empty the app will notice you in the “Message” textbox. In any case, the full path of the output file will be given in the “Message” textbox
 
 ### Footnotes
 [^1]: Please refer to [this website](https://site.physics.georgetown.edu/matlab/) for more details.

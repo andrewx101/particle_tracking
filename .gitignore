@@ -5,3 +5,6 @@ xml2struct.m
 *.prj
 particle_tracking.mlappinstall
 particle_tracking.mlappinstall
+*.mlapp
+particle_tracking.mlapp
+*.mat
