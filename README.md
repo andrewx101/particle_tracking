@@ -18,7 +18,7 @@ The supported formats of raw images are indicated in the "File type" panel.
 
 The ND2 format is generated from a Nikon microscope. Time-lapse images should be contained in a single ND2 file.
 
-The FITS format is exported by the Solis software of Andor detector. For FITS format, a pixel depth of 16-bit is assumed. The Solis software will split the exported FITS files into portions. So please select all FITS files of the same time-lapse series in the file loading window in this case.
+The FITS format is exported by the Solis software of Andor detector. For FITS format, a pixel depth of 16-bit (int16) is assumed. The Solis software will split the exported FITS files into portions. So please select all FITS files of the same time-lapse series in the file loading window in this case.
 
 Support for more widely used formats (e.g. TIFF stacks) is not written at this moment.
 
