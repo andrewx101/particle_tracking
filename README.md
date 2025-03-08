@@ -67,6 +67,8 @@ You may want to zoom the image to view the result of a particular particle. It i
 
 Click “Clear tracks” to clear the tracks data and the plotted trajectories in the figure.
 
+If the `Stage motion canceling` is checked, common motion of all particles were canceled. The corrected tracks are shown in the image instead of the raw ones. 
+
 ### Save outputs into files
 Click "Save data" button and a number of files will be saved under the same path of the opened files.
 
@@ -105,7 +107,9 @@ Details about the matrix `poslst` can be found elsewhere.[^1][^3] In reference [
 
 ​	`tr` (4-column double): the tracking data See the README of [Track Analysis](https://github.com/andrewx101/track_analysis/) app for details.
 
-If any of the three set of data are empty the app will notice you in the “Message” textbox. In any case, the full path of the output file will be given in the “Message” textbox
+If the `Stage motion canceling` is checked, common motion of all particles were canceled. The corrected tracks are saved instead of the raw ones. 
+
+If any of the three set of data are empty the app will notice you in the “Message” textbox. In any case, the full path of the output file will be given in the “Message” textbox.
 
 ### Footnotes
 [^1]: Please refer to [this website](https://site.physics.georgetown.edu/matlab/) for more details.
