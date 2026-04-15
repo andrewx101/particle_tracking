@@ -11,7 +11,7 @@ Features:
 ### Instalation
 This app requires [the BIO-FORMATS toolbox by OME](https://www.openmicroscopy.org/bio-formats/). Please make sure this toolbox is properly installed in your MATLAB environment.
 
-Unzip and drag the `.mlappinstall` file to the command window of MATLAB. After the installation it will appear in the app list. 
+Uninstall old version in the add-ons manager in MATLAB and search for Particle Tracking (author: Weixiang Sun).
 
 ### Load time-lapse files
 The supported formats of raw images are indicated in the "File type" panel. 
