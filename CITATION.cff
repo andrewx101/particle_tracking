@@ -16,4 +16,5 @@ authors:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.19596196
+repository-code: 'https://github.com/andrewx101/particle_tracking'
 license: GPL-3.0
