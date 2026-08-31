@@ -111,6 +111,8 @@ If the `Stage motion canceling` is checked, common motion of all particles were 
 
 If any of the three set of data are empty the app will notice you in the “Message” textbox. In any case, the full path of the output file will be given in the “Message” textbox.
 
+Cite this repo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19596196.svg)](https://doi.org/10.5281/zenodo.19596196)
+
 ### Footnotes
 [^1]: Please refer to [this website](https://site.physics.georgetown.edu/matlab/) for more details.
 [^2]: This `readme.md` and also the app are for users familiar with the field of probe microrheology. See for example: Waigh, T. A. "Microrheology of Complex Fluids." *Reports on Progress in Physics* 68, no. 3 (2005): 685-742.
